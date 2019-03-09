@@ -37,12 +37,28 @@ ui <- navbarPage(
   # Start of Page 2
   tabPanel(
     "Bar Chart",
-    titlePanel("Edit this"),
+    titlePanel(
+      "Breakdown of Fuel Types by State"
+    ),
     sidebarLayout(
       sidebarPanel(
-      ),
+        # Widget 1 for page 1
+        checkboxGroupInput(
+          "checkGroup", 
+          label = h3("Select Fuel Type"), 
+           choices = list(
+             "BD" = 1, 
+             "CNG" = 2, 
+             "E85" = 3,
+             "ELEC" = 4,
+             "HY" = 5,
+             "LNG" = 6,
+             "LPG" = 7
+             ),
+            selected = 1)
+    ),
       mainPanel(
-        plotOutput("hist")
+        plotOutput("plot")
       )
     )
   ),
