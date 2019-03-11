@@ -14,7 +14,7 @@ library("plotly")
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 ################################## UI ########################################
-# Making the UI cleaner by putting code into variables
+# Dropdown menu for selecting states
 bar_widget_1 <- selectInput(
   "select_state",
   label = "Select State",
@@ -22,6 +22,7 @@ bar_widget_1 <- selectInput(
   selected = "WA"
 )
 
+# Checkbox for fuel types
 bar_widget_2 <- checkboxGroupInput(
   "check_fuel", 
   label = h3("Select Fuel Type"), 
@@ -37,65 +38,71 @@ bar_widget_2 <- checkboxGroupInput(
   selected = 1
 )
 
+# Overview Page
+page_one <- tabPanel(
+  "Overview",
+  titlePanel(
+    "Edit this"
+  ),
+  sidebarLayout(
+    sidebarPanel(
+    ),
+    mainPanel(
+      plotOutput("plot")
+    )
+  )
+)
+
+# Map page
+page_two <- tabPanel(
+  "Map",
+  titlePanel(
+    "Edit this"
+  ),
+  sidebarLayout(
+    sidebarPanel(
+    ),
+    mainPanel(
+      plotOutput("plot")
+    )
+  )
+)
+
+# Bar chart page
+page_three <- tabPanel(
+  "Bar Chart", # Tab Name
+  titlePanel("Breakdown of Fuel Types by State"),
+  sidebarLayout(
+    sidebarPanel(
+      # Widgets
+      bar_widget_1,
+      bar_widget_2
+    ),
+    mainPanel(
+      plotlyOutput("bar")
+    )
+  )
+)
+
+# Line graph page
+page_four <- tabPanel(
+  "Line Graph",
+  titlePanel("Alternate Fuel Growth"),
+  sidebarLayout(
+    sidebarPanel(
+      
+    ),
+    mainPanel(
+      plotOutput("line")
+    )
+  )
+)
+  
 # Start of UI
 ui <- navbarPage(
   "Analyzing Alternative Fuel Types",
-  tabPanel(
-    "Overview",
-    titlePanel(
-      "Edit this"
-    ),
-    sidebarLayout(
-      sidebarPanel(
-      ),
-      mainPanel(
-        plotOutput("plot")
-      )
-    )
-  ),
-  # End of Page 1
-  
-  # Start of Page 2
-  tabPanel(
-    "Map",
-    titlePanel(
-      "Edit this"
-    ),
-    sidebarLayout(
-      sidebarPanel(
-      ),
-    mainPanel(
-        plotOutput("plot")
-      )
-    )
-  ),
-  
-  # Start of Page 3
-  tabPanel(
-    "Bar Chart", # Tab Name
-    titlePanel("Breakdown of Fuel Types by State"),
-    sidebarLayout(
-      sidebarPanel(
-        # Widgets
-        bar_widget_1,
-        bar_widget_2
-      ),
-      mainPanel(
-        plotlyOutput("bar")
-      )
-    )
-  ),
-  
-  # Start of Page 4
-  tabPanel(
-    "Line Graph",
-    titlePanel("Edit this"),
-    sidebarLayout(
-      sidebarPanel(
-      ),
-      mainPanel(
-        plotOutput("hist")
-      )
-    )
-  )
+  page_one,
+  page_two,
+  page_three,
+  page_four
 )
