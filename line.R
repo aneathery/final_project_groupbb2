@@ -13,7 +13,7 @@ gas_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 yearly_gas_data <- gas_data %>%
   mutate(
     year = as.numeric(substr(gas_data$Open.Date, nchar(gas_data$Open.Date) -
-    3, nchar(gas_data$Open.Date)))
+                               3, nchar(gas_data$Open.Date)))
   ) %>%
   filter( 
     Fuel.Type.Code == "BD" # Select which fuel type to use
@@ -25,7 +25,7 @@ yearly_gas_data <- gas_data %>%
 testing <- gas_data %>%
   mutate(
     year = as.numeric(substr(gas_data$Open.Date, nchar(gas_data$Open.Date) -
-      3, nchar(gas_data$Open.Date))) 
+                               3, nchar(gas_data$Open.Date))) 
   ) %>% 
   group_by(Fuel.Type.Code, State, year) %>%
   count()
@@ -61,17 +61,17 @@ testplot <- plot_ly(
   data = yearly_gas_data, 
   x = ~year, 
   type = 'scatter', 
-  mode = 'line+markers',
+  mode = 'line',
   y = ~n, 
   name = 'ELEC', 
-  mode = 'line+markers'
-  ) %>%
+  mode = 'line'
+) %>%
   add_trace(
     x = ~bee$year,
     y = ~bee$n, 
     name = 'BD', 
-    mode = 'line+markers'
-    ) %>%
+    mode = 'line'
+  ) %>%
   layout(title = paste("Stations Opened By Year"),
          xaxis = list(title = "Year"),
          yaxis = list (title = "Stations Opened"))
