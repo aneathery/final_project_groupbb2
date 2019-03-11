@@ -83,4 +83,4 @@ make_line_graph <- function(data, fuel_type, start_year, end_year) {
   return(line_graph)
 }
 
-zz <- make_line_graph(gas_data, "ELEC", 2005, 2018)
+zz <- make_line_graph(gas_data, "ELEC", 1970, 2018)

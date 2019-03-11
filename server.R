@@ -1,13 +1,15 @@
 # final-project
 
 # This is the file that provides instructions to the R server.
+library(shiny)
 
 # Read in data
 source("bar.R")
+source("line.R")
 raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # Start shinyServer
-serverServer <- function(input, output) {
+shinyServer <- function(input, output) {
   
   # Page 1 Overview
   
@@ -19,4 +21,7 @@ serverServer <- function(input, output) {
   })
   
   # Page 4 Line Graph
+  output$line <- renderPlotyly({
+    
+  })
 }

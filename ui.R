@@ -84,6 +84,8 @@ page_three <- tabPanel(
   )
 )
 
+year_range <- range()
+
 # Line graph page
 page_four <- tabPanel(
   "Line Graph",
@@ -91,18 +93,35 @@ page_four <- tabPanel(
   sidebarLayout(
     sidebarPanel(
       
+      # Drop down menu that allows user to select a fuel type
+      selectInput(
+        inputId = "fuel_type",
+        label = "Fuel Type",
+        choices = unique(fuel$Fuel.Type.Code)
+      ),
+      selected = "ELEC"
+      
+      # Slider that lets the user pick the range of population density
+      #sliderInput(
+      #  "years",
+      #  label = "Timeline",
+      #  min = 1980,
+      #  max = 2018,
+      #  value = 
+      #)
+      
     ),
     mainPanel(
-      plotOutput("line")
+      plotOutput(outputId = "line")
     )
   )
 )
   
 # Start of UI
-ui <- navbarPage(
+shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
   page_one,
   page_two,
   page_three,
   page_four
-)
+))
