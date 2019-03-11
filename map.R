@@ -21,7 +21,7 @@ raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 # States
 
 color_palette <- colorFactor(
-  c("navy", "forestgreen", "yellow", "green", "blue", "orange", "deepskyblue"),
+  c("navy", "deepskyblue", "dodgerblue4", "turquoise4", "blue", "lightblue1", "midnightblue"),
   domain = unique(stations_df$Fuel.Type.Code) 
 )
 
