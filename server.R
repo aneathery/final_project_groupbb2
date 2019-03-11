@@ -8,7 +8,15 @@ raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # Start shinyServer
 serverServer <- function(input, output) {
+  
+  # Page 1 Overview
+  
+  # Page 2 Map
+  
+  # Page 3 Bar Chart
   output$bar <- renderPlotly({
     return(make_bar_chart(raw_data, input$select_state, input$check_fuel))
   })
+  
+  # Page 4 Line Graph
 }
