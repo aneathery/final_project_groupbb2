@@ -10,73 +10,37 @@ library(plotly)
 gas_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # Data filtered by year opened
-yearly_gas_data <- gas_data %>%
+yearly_data <- gas_data %>%
   mutate(
     year = as.numeric(substr(gas_data$Open.Date, nchar(gas_data$Open.Date) -
-                               3, nchar(gas_data$Open.Date)))
+      3, nchar(gas_data$Open.Date)))
   ) %>%
-  filter( 
-    Fuel.Type.Code == "BD" # Select which fuel type to use
-  ) %>% 
+  filter(
+    Fuel.Type.Code == "E85" # Select which fuel type to use
+  ) %>%
   group_by(year) %>%
   count()
 
-# Grouping by fuel type, state, and year
-testing <- gas_data %>%
-  mutate(
-    year = as.numeric(substr(gas_data$Open.Date, nchar(gas_data$Open.Date) -
-                               3, nchar(gas_data$Open.Date))) 
-  ) %>% 
-  group_by(Fuel.Type.Code, State, year) %>%
-  count()
-
-# Removing the row with NA values
-yearly_gas_data <- yearly_gas_data[-nrow(yearly_gas_data), ]
+# Data for years
+years <- c(1990:2018)
+year <- data.frame("year" = years)
+yearly_data <- left_join(year, yearly_data, by = "year")
+yearly_data$n[is.na(yearly_data$n)] <- 0
 
 # Line graph
 plot <- plot_ly(
-  data = yearly_gas_data,
+  data = yearly_data,
   x = ~year,
   y = ~n,
-  type = 'scatter',
-  mode = "line"
-) 
-
-# Testing line plot out
-yeet <- pull(yearly_gas_data[1,2])
-testplot <- plot_ly(
-  data = yearly_gas_data,
-  x = ~year,
   type = "scatter",
-  mode = "line+markers"
+  mode = "line"
 ) %>%
-  add_lines(y = ~n, name = "linear", line = list(shape = "linear"))
+  layout(
+    title = paste0("Stations Opened By Year"),
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Stations Opened")
+  )
 
-############################## Testing #########################################
+# Fuel Types
+fuel_types <- unique(gas_data$Fuel.Type.Code)
 
-bee <- testing %>%
-  filter(Fuel.Type.Code == "BD")
-
-testplot <- plot_ly(
-  data = yearly_gas_data, 
-  x = ~year, 
-  type = 'scatter', 
-  mode = 'line',
-  y = ~n, 
-  name = 'ELEC', 
-  mode = 'line'
-) %>%
-  add_trace(
-    x = ~bee$year,
-    y = ~bee$n, 
-    name = 'BD', 
-    mode = 'line'
-  ) %>%
-  layout(title = paste("Stations Opened By Year"),
-         xaxis = list(title = "Year"),
-         yaxis = list (title = "Stations Opened"))
-
-################################################################################
-
-# Gas types
-gas <- c("BD", "CNG", "E85", "ELEC", "HY", "LNG", "LPG")
