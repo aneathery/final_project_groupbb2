@@ -155,7 +155,7 @@ page_four <- tabPanel(
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
   # page_one,
-   #page_two#,
+  # page_two#,
   page_three,
   page_four
 ))
