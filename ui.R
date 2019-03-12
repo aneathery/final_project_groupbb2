@@ -1,17 +1,30 @@
-# final-project
-
-# This is the file that both drives the structure of the user interface.
+# ui.R
 
 ############################## Set up ##########################################
 
-# Loading in the necessary packages to complete the assignment
+# Load Libraries
 library("dplyr")
 library("shiny")
 library("ggplot2")
 library("rsconnect")
 library("plotly")
 
+# Load data 
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
+
+# List of State names
+state_names <- unique(fuel$State)
+
+# Fuel Types
+fuel_types <- list(
+  "Biodiesel (BD)" = "BD", 
+  "Compressed Natural Gas (CNG)" = "CNG", 
+  "Ethanol (E85)"= "E85",
+  "Electric Charging (ELEC)" = "ELEC",
+  "Hydrogen (HY)" = "HY",
+  "Liquefied Natural Gas (LNG)" = "LNG",
+  "Propane (LNG)" = "LPG"
+)
 
 ################################# Widgets ######################################
 
@@ -19,7 +32,8 @@ fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 bar_widget_1 <- selectInput(
   "select_state",
   label = "Select State",
-  choices = fuel$State,
+  choices = state_names,
+  #choices = fuel$State, # I made the state names into a variable, I'm not sure if it messes up the code
   selected = "WA"
 )
 
@@ -43,12 +57,12 @@ bar_widget_2 <- checkboxGroupInput(
 dropdown_fuel_type <- selectInput(
   inputId = "fuel_type",
   label = "Fuel Type",
-  choices = unique(fuel$Fuel.Type.Code),
+  choices = fuel_types,
   selected = "ELEC"
 )
 
 # Slider that lets the user pick the range of years
-year_timeline <- sliderInput(
+slider_year_timeline <- sliderInput(
   "year_range",
   label = "Timeline",
   min = 1990,
@@ -91,7 +105,8 @@ page_two <- tabPanel(
 
 # Bar chart page
 page_three <- tabPanel(
-  "Bar Chart", # Tab Name
+  # Tab name
+  "Bar Chart",
   titlePanel("Breakdown of Fuel Types by State"),
   sidebarLayout(
     sidebarPanel(
@@ -107,13 +122,14 @@ page_three <- tabPanel(
 
 # Line graph page
 page_four <- tabPanel(
+  # Tab name
   "Line Graph",
   titlePanel("Alternate Fuel Growth"),
   sidebarLayout(
     sidebarPanel(
       # Widgets
       dropdown_fuel_type,
-      year_timeline
+      slider_year_timeline
     ),
     mainPanel(
       plotlyOutput(outputId = "line")
