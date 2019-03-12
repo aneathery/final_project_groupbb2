@@ -16,7 +16,7 @@ library("styler")
 # Load raw data
 raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
-############################## Bar Chart #####################################
+########################## Map Visualization  ##################################
 
 # This map displays the location of alternative fuel stations in the United
 # States
