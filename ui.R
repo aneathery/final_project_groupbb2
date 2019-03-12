@@ -112,7 +112,7 @@ page_four <- tabPanel(
       
     ),
     mainPanel(
-      plotOutput(outputId = "line")
+      plotlyOutput(outputId = "line")
     )
   )
 )
@@ -120,8 +120,8 @@ page_four <- tabPanel(
 # Start of UI
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
-  page_one,
-  page_two,
-  page_three,
+  #page_one,
+  #page_two,
+  #page_three,
   page_four
 ))

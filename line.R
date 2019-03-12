@@ -50,9 +50,9 @@ fuel_types <- unique(gas_data$Fuel.Type.Code)
 make_line_graph <- function(data, fuel_type, start_year, end_year) {
  
   # Data filtered by year opened
-  yearly_data <- gas_data %>%
+  yearly_data <- data %>%
     mutate(
-      year = as.numeric(substr(gas_data$Open.Date, nchar(gas_data$Open.Date) -
+      year = as.numeric(substr(data$Open.Date, nchar(data$Open.Date) -
         3, nchar(gas_data$Open.Date)))
     ) %>%
     filter(
@@ -61,14 +61,16 @@ make_line_graph <- function(data, fuel_type, start_year, end_year) {
     group_by(year) %>%
     count()
   
-  # Filtering the data by year range
+  # Creates a data frame of a year range and combines with fuel data.
+  # Some years are missing and this section of code will create those missing
+  # years and assign 0 stations opened for that year.
   years <- c(start_year:end_year)
   year <- data.frame("year" = years)
   yearly_data <- left_join(year, yearly_data, by = "year")
   yearly_data$n[is.na(yearly_data$n)] <- 0 # Changing NA values to 0
   
   # Line graph
-  line_graph <- plot_ly(
+  plot_ly(
     data = yearly_data,
     x = ~year,
     y = ~n,
@@ -80,7 +82,4 @@ make_line_graph <- function(data, fuel_type, start_year, end_year) {
       xaxis = list(title = "Year"),
       yaxis = list(title = "Stations Opened")
     )
-  return(line_graph)
 }
-
-zz <- make_line_graph(gas_data, "ELEC", 1970, 2018)
