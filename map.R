@@ -22,7 +22,7 @@ raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 make_station_map <- function(stations_df, fuel_choice){
   color_palette <- colorFactor(
-    c("navy", "deepskyblue", "dodgerblue4", "turquoise4", "blue", "lightblue1", "midnightblue"),
+    c("navy", "red1", "plum3", "turquoise4", "seagreen1", "orangered2", "yellowgreen"),
     domain = unique(stations_df$Fuel.Type.Code)
   )
   
@@ -37,6 +37,13 @@ make_station_map <- function(stations_df, fuel_choice){
                      "; Station Name: ", stations_df$Station.Name,
                      "; Fuel Type: ", stations_df$Fuel.Type.Code),
       color = ~color_palette(Fuel.Type.Code)
+    ) %>%
+    addLegend(
+      pal = color_palette, 
+      values = ~stations_df$Fuel.Type.Code, 
+      title = "Legend",
+      group = "circles", 
+      position = "bottomleft"
     ) %>%
     setView(-100, 37.8, 3.6)
 }

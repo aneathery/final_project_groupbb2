@@ -66,6 +66,13 @@ slider_year_timeline <- sliderInput(
   sep = ""
 )
 
+map_widget <- checkboxGroupInput(
+  inputId = "fuel_type",
+  label = "Fuel Type",
+  choices = fuel_types,
+  selected = "BD"
+)
+
 ################################# UI ###########################################
 
 # Overview Page
@@ -102,7 +109,9 @@ page_two <- tabPanel(
   h1(), # Creating space between text and widgets/graphs
   # Start of data
   sidebarLayout(
-    sidebarPanel(),
+    sidebarPanel(
+      map_widget
+    ),
     mainPanel(
       leafletOutput("map")
     )
@@ -168,7 +177,7 @@ page_four <- tabPanel(
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
   # page_one,
-  # page_two#,
+  page_two,
   page_three,
   page_four
 ))
