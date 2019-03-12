@@ -1,11 +1,16 @@
 # line.R
 
-# Line chart that shows the number of stations opened within a specified
-# timeline, for a specified fuel type
 
-# Load libraries
+# This is the file in which Patrick will be creating a line graph that shows the
+# number of stations opened within a specified timeline, for a specified fuel 
+# type 
+
+################################### Set up ###################################
+
 library("dplyr")
 library("plotly")
+
+############################## Line Graph #####################################
 
 # This function takes in a data set, a fuel type, and a start and end year and
 # creates a line graph of the number of fueling stations opened for a specified
