@@ -99,16 +99,17 @@ page_four <- tabPanel(
         label = "Fuel Type",
         choices = unique(fuel$Fuel.Type.Code)
       ),
-      selected = "ELEC"
+      selected = "ELEC",
       
       # Slider that lets the user pick the range of population density
-      #sliderInput(
-      #  "years",
-      #  label = "Timeline",
-      #  min = 1980,
-      #  max = 2018,
-      #  value = 
-      #)
+      sliderInput(
+        "year_range",
+        label = "Timeline",
+        min = 1980,
+        max = 2018,
+        value = c(1990, 2018),
+        sep = ""
+      )
       
     ),
     mainPanel(

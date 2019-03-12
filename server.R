@@ -22,6 +22,8 @@ shinyServer <- function(input, output) {
   
   # Page 4 Line Graph
   output$line <- renderPlotly({
-    make_line_graph(fuel_data, input$fuel_type, 2000, 2018)
+    make_line_graph(
+      fuel_data, input$fuel_type, input$year_range[1], input$year_range[2]
+    )
   })
 }

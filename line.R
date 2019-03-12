@@ -41,9 +41,6 @@ plot <- plot_ly(
     yaxis = list(title = "Stations Opened")
   )
 
-# Fuel Types
-fuel_types <- unique(gas_data$Fuel.Type.Code)
-
 # This function takes in a data set, a fuel type, and a start and end year and 
 # creates a line graph of the number of fueling stations opened for a specified
 # fuel type within a specified ranged
