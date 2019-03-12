@@ -22,7 +22,10 @@ shinyServer <- function(input, output) {
   
   # Page 3 Bar Chart
   output$bar <- renderPlotly({
-    return(make_bar_chart(fuel_data, input$select_state, input$check_fuel))
+    return(make_bar_chart(fuel_data, input$select_state))
+  })
+  output$bar_two <- renderPlotly({
+    return(make_bar_chart_two(fuel_data, input$select_state_two))
   })
   
   # Page 4 Line Graph

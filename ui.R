@@ -8,12 +8,18 @@ library("shiny")
 library("ggplot2")
 library("rsconnect")
 library("plotly")
+library("leaflet")
+library("lubridate")
+library("ggmap")
 
 # Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
-# List of State names
-state_names <- unique(fuel$State)
+# Getting the state names for the dropdown menu
+state_names <- fuel %>%
+  select(State) %>%
+  arrange(State) %>% # Alphabetizing the states
+  distinct(State) # Getting each individual state
 
 # Fuel Types
 fuel_types <- list(
@@ -28,29 +34,18 @@ fuel_types <- list(
 
 ################################# Widgets ######################################
 
-# Dropdown menu for selecting states
 bar_widget_1 <- selectInput(
   "select_state",
-  label = "Select State",
+  label = "Select First State",
   choices = state_names,
-  # choices = fuel$State, # I made the state names into a variable, I'm not sure if it messes up the code
-  selected = "WA"
+  selected = "AR"
 )
 
-# Checkbox for fuel types
-bar_widget_2 <- checkboxGroupInput(
-  "check_fuel",
-  label = h3("Select Fuel Type"),
-  choices = list(
-    "BD" = 1,
-    "CNG" = 2,
-    "E85" = 3,
-    "ELEC" = 4,
-    "HY" = 5,
-    "LNG" = 6,
-    "LPG" = 7
-  ),
-  selected = 1
+bar_widget_2 <- selectInput(
+  "select_state_two",
+  label = "Select Second State",
+  choices = state_names,
+  selected = "MS"
 )
 
 # Drop down menu that allows user to select a fuel type
@@ -103,9 +98,24 @@ page_two <- tabPanel(
 
 # Bar chart page
 page_three <- tabPanel(
-  # Tab name
-  "Bar Chart",
-  titlePanel("Breakdown of Fuel Types by State"),
+  "Bar Chart", # Tab Name
+  titlePanel("Breakdown of Fuel Types for Two States"),
+  # Description of Analysis Importance
+  p("There are various types of fuel stations throughout the United States
+    that consumers can choose from. As the amount of stations within each
+    state varies, so does the amount of each fuel type. "),
+  h4("Choose two states to analyze using the dropdown menus."),
+  p("By looking at the two bar charts, one can visually see how the
+    availability of different fuel type stations varies between the two
+    states. One can quickly learn which fuel type has the most amount of
+    stations in each state compared to the other type, the distribution
+    between the fuel types, and how the two states compare in distribution.
+    This information allows potential buyers to learn in which states his/her
+    fuel type of interest is most accessible in and be able to compare
+    two states of interest. "),
+  h1(), # Creating space between text and widgets/graphs
+  h1(), # Creating space between text and widgets/graphs
+  # Start of data
   sidebarLayout(
     sidebarPanel(
       # Widgets
@@ -113,7 +123,13 @@ page_three <- tabPanel(
       bar_widget_2
     ),
     mainPanel(
-      plotlyOutput("bar")
+      fluidRow(
+        splitLayout(
+          cellWidths = c("50%", "50%"), # Two charts side-by-side
+          plotlyOutput("bar"),
+          plotlyOutput("bar_two")
+        )
+      )
     )
   )
 )
@@ -139,7 +155,7 @@ page_four <- tabPanel(
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
   # page_one,
-   page_two#,
-  # page_three,
+   #page_two#,
+  page_three#,
   #page_four
 ))
