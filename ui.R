@@ -2,7 +2,7 @@
 
 # This is the file that both drives the structure of the user interface.
 
-############################## Set up #######################################
+############################## Set up ##########################################
 
 # Loading in the necessary packages to complete the assignment
 library("dplyr")
@@ -13,7 +13,8 @@ library("plotly")
 
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
-################################## UI ########################################
+################################# Widgets ######################################
+
 # Dropdown menu for selecting states
 bar_widget_1 <- selectInput(
   "select_state",
@@ -37,6 +38,26 @@ bar_widget_2 <- checkboxGroupInput(
   ),
   selected = 1
 )
+
+# Drop down menu that allows user to select a fuel type
+dropdown_fuel_type <- selectInput(
+  inputId = "fuel_type",
+  label = "Fuel Type",
+  choices = unique(fuel$Fuel.Type.Code),
+  selected = "ELEC"
+)
+
+# Slider that lets the user pick the range of years
+year_timeline <- sliderInput(
+  "year_range",
+  label = "Timeline",
+  min = 1990,
+  max = 2018,
+  value = c(1990, 2018),
+  sep = ""
+)
+
+################################# UI ###########################################
 
 # Overview Page
 page_one <- tabPanel(
@@ -84,33 +105,15 @@ page_three <- tabPanel(
   )
 )
 
-year_range <- range()
-
 # Line graph page
 page_four <- tabPanel(
   "Line Graph",
   titlePanel("Alternate Fuel Growth"),
   sidebarLayout(
     sidebarPanel(
-      
-      # Drop down menu that allows user to select a fuel type
-      selectInput(
-        inputId = "fuel_type",
-        label = "Fuel Type",
-        choices = unique(fuel$Fuel.Type.Code)
-      ),
-      selected = "ELEC",
-      
-      # Slider that lets the user pick the range of population density
-      sliderInput(
-        "year_range",
-        label = "Timeline",
-        min = 1980,
-        max = 2018,
-        value = c(1990, 2018),
-        sep = ""
-      )
-      
+      # Widgets
+      dropdown_fuel_type,
+      year_timeline
     ),
     mainPanel(
       plotlyOutput(outputId = "line")
