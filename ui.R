@@ -9,7 +9,7 @@ library("ggplot2")
 library("rsconnect")
 library("plotly")
 
-# Load data 
+# Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # List of State names
@@ -17,9 +17,9 @@ state_names <- unique(fuel$State)
 
 # Fuel Types
 fuel_types <- list(
-  "Biodiesel (BD)" = "BD", 
-  "Compressed Natural Gas (CNG)" = "CNG", 
-  "Ethanol (E85)"= "E85",
+  "Biodiesel (BD)" = "BD",
+  "Compressed Natural Gas (CNG)" = "CNG",
+  "Ethanol (E85)" = "E85",
   "Electric Charging (ELEC)" = "ELEC",
   "Hydrogen (HY)" = "HY",
   "Liquefied Natural Gas (LNG)" = "LNG",
@@ -33,17 +33,17 @@ bar_widget_1 <- selectInput(
   "select_state",
   label = "Select State",
   choices = state_names,
-  #choices = fuel$State, # I made the state names into a variable, I'm not sure if it messes up the code
+  # choices = fuel$State, # I made the state names into a variable, I'm not sure if it messes up the code
   selected = "WA"
 )
 
 # Checkbox for fuel types
 bar_widget_2 <- checkboxGroupInput(
-  "check_fuel", 
-  label = h3("Select Fuel Type"), 
+  "check_fuel",
+  label = h3("Select Fuel Type"),
   choices = list(
-    "BD" = 1, 
-    "CNG" = 2, 
+    "BD" = 1,
+    "CNG" = 2,
     "E85" = 3,
     "ELEC" = 4,
     "HY" = 5,
@@ -80,8 +80,7 @@ page_one <- tabPanel(
     "Edit this"
   ),
   sidebarLayout(
-    sidebarPanel(
-    ),
+    sidebarPanel(),
     mainPanel(
       plotOutput("plot")
     )
@@ -95,8 +94,7 @@ page_two <- tabPanel(
     "Edit this"
   ),
   sidebarLayout(
-    sidebarPanel(
-    ),
+    sidebarPanel(),
     mainPanel(
       plotOutput("plot")
     )
@@ -136,12 +134,12 @@ page_four <- tabPanel(
     )
   )
 )
-  
+
 # Start of UI
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
-  #page_one,
-  #page_two,
-  #page_three,
+  # page_one,
+  # page_two,
+  # page_three,
   page_four
 ))
