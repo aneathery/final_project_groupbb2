@@ -20,6 +20,7 @@ raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 # This map displays the location of alternative fuel stations in the United 
 # States
 
+make_station_map <- function(stations_df, Fuel.Type.Code){
 color_palette <- colorFactor(
   c("navy", "deepskyblue", "dodgerblue4", "turquoise4", "blue", "lightblue1", "midnightblue"),
   domain = unique(stations_df$Fuel.Type.Code) 
@@ -36,4 +37,4 @@ stations_map <- leaflet(data = stations_df) %>%
     color = ~color_palette(Fuel.Type.Code)
   ) %>%
   setView(-100, 37.8, 3.6)
-
+}

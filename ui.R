@@ -91,12 +91,12 @@ page_one <- tabPanel(
 page_two <- tabPanel(
   "Map",
   titlePanel(
-    "Edit this"
+    "Alternative Fuel Station Locations"
   ),
   sidebarLayout(
     sidebarPanel(),
     mainPanel(
-      plotOutput("plot")
+      leafletOutput("map")
     )
   )
 )
@@ -139,7 +139,7 @@ page_four <- tabPanel(
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
   # page_one,
-  # page_two,
+   page_two#,
   # page_three,
-  page_four
+  #page_four
 ))

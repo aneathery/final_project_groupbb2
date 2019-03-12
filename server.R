@@ -6,6 +6,7 @@ library(shiny)
 # Read in data
 source("bar.R")
 source("line.R")
+source("map.R")
 fuel_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # Start shinyServer
@@ -14,6 +15,10 @@ shinyServer <- function(input, output) {
   # Page 1 Overview
   
   # Page 2 Map
+  output$map <- renderLeaflet({
+    return(make_station_map(fuel_data, input$fuel_type))
+  }) 
+    
   
   # Page 3 Bar Chart
   output$bar <- renderPlotly({
