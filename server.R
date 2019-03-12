@@ -1,12 +1,14 @@
-# final-project
+# server.R
 
 # This is the file that provides instructions to the R server.
 library("shiny")
 
-# Read in data
+# Source in files
 source("bar.R")
 source("line.R")
 source("map.R")
+
+# Load data
 fuel_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
 # Start shinyServer
@@ -18,7 +20,11 @@ shinyServer <- function(input, output) {
   output$map <- renderLeaflet({
     return(make_station_map(fuel_data, input$fuel_type))
   })
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 312fce60c5b237da32e6b737ebdbe7bc9aa4c473
 
   # Page 3 Bar Chart
   output$bar <- renderPlotly({

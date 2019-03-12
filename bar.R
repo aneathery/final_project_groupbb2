@@ -1,4 +1,4 @@
-# final-project-groupbb2
+# bar.R
 
 # This is the file in which Karen will be creating a bar chart about the 
 # breakdown of different fuel types in each state. 

@@ -88,6 +88,19 @@ page_two <- tabPanel(
   titlePanel(
     "Alternative Fuel Station Locations"
   ),
+  # Description of Analysis Importance
+  p("One way to conceptualize the demand for alternative fuel is by visualizing 
+    the popularity of different fuel types in different regions of the country. 
+    "),
+  h4("Select alternative fuel types of interest to view their locations 
+     throughout the United States."),
+  p("Using a map to display the location of alternative stations allows 
+    potential buyers to better visualize the locations of fuel stations and thus
+    develop an intuitive understanding of the differing needs 
+    for alternative fuel in different regions of the U.S."),
+  h1(), # Creating space between text and widgets/graphs
+  h1(), # Creating space between text and widgets/graphs
+  # Start of data
   sidebarLayout(
     sidebarPanel(),
     mainPanel(
