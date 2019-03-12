@@ -55,26 +55,3 @@ make_bar_chart_two <- function(data_set, state_var) {
     yaxis = list(title = "Number of Stations")
   )
 }
-
-# getting_data <- data_set %>%
-#   select(State, fuel_type) %>%
-#   arrange(State) %>%  
-#   filter(State == state_var) %>% 
-#   group_by(fuel_type) %>% 
-#   count() %>% 
-#   filter(fuel_type == fuel_var)
-#   
-# fuel_chart <- plot_ly(
-#     data = getting_data, # data frame to show
-#     x = ~n, # variable for the x-axis, specified as a formula
-#     y = ~fuel_type, # variable for the y-axis, specified as a formula
-#     type = "bar", # create a chart of type "bar" -- a bar chart
-#     alpha = .7, # adjust the opacity of the bars
-#     hovertext = ~n,
-#     orientation = "h"
-#   ) %>%
-#   layout( # Proper labels for the map
-#     title = "Breakdown of Fuel Types",
-#     xaxis = list(title = "Number of Stations"),
-#     yaxis = list(title = "Fuel Type")
-#   )
