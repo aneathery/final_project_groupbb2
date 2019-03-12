@@ -34,6 +34,7 @@ fuel_types <- list(
 
 ################################# Widgets ######################################
 
+# First dropdown state menu
 bar_widget_1 <- selectInput(
   "select_state",
   label = "Select First State",
@@ -41,6 +42,7 @@ bar_widget_1 <- selectInput(
   selected = "AR"
 )
 
+# Second dropdown state menu
 bar_widget_2 <- selectInput(
   "select_state_two",
   label = "Select Second State",
@@ -50,7 +52,7 @@ bar_widget_2 <- selectInput(
 
 # Drop down menu that allows user to select a fuel type
 dropdown_fuel_type <- selectInput(
-  inputId = "fuel_type",
+  inputId = "fuel_type_line",
   label = "Fuel Type",
   choices = fuel_types,
   selected = "ELEC"
@@ -66,8 +68,9 @@ slider_year_timeline <- sliderInput(
   sep = ""
 )
 
+# Checkbox that lets users select what fuel to see
 map_widget <- checkboxGroupInput(
-  inputId = "fuel_type",
+  inputId = "fuel_type_map",
   label = "Fuel Type",
   choices = fuel_types,
   selected = "BD"
@@ -161,6 +164,17 @@ page_four <- tabPanel(
   # Tab name
   "Line Graph",
   titlePanel("Alternate Fuel Growth"),
+  # Description of line graph"
+  p("Some forms of alternate fuel are more popular than others. This page allows
+    people and/or businesses to compare how popular the various forms of
+    alternate fuel are by presenting the number of stations opened each year
+    for a specified fuel type."),
+  h4("Choose a fuel type to analyze using the dropdown menu"),
+  p("By looking at the trend of stations opened year by year, people can
+    easily visualize the trend that a fuel type is undergoing."),
+  h1(), # Creating space between text and widgets/graphs
+  h1(), # Creating space between text and widgets/graphs
+  # Start of data
   sidebarLayout(
     sidebarPanel(
       # Widgets
