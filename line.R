@@ -16,7 +16,7 @@ make_line_graph <- function(data, fuel_type, start_year, end_year) {
   yearly_data <- data %>%
     mutate(
       year = as.numeric(substr(data$Open.Date, nchar(data$Open.Date) -
-        3, nchar(gas_data$Open.Date)))
+        3, nchar(data$Open.Date)))
     ) %>%
     filter(
       Fuel.Type.Code == fuel_type # Select which fuel type to use
