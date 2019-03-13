@@ -73,7 +73,7 @@ map_widget <- checkboxGroupInput(
   inputId = "fuel_type_map",
   label = "Fuel Type",
   choices = fuel_types,
-  selected = "BD"
+  selected = "HY"
 )
 
 ################################# UI ###########################################
@@ -82,14 +82,10 @@ map_widget <- checkboxGroupInput(
 page_one <- tabPanel(
   "Overview",
   titlePanel(
-    "Edit this"
+    "Alternative Fuel Stations - About our Project"
   ),
-  sidebarLayout(
-    sidebarPanel(),
-    mainPanel(
-      plotOutput("plot")
-    )
-  )
+  includeMarkdown("README.md"),
+  includeCSS("style.css")
 )
 
 # Map page
@@ -190,7 +186,7 @@ page_four <- tabPanel(
 # Start of UI
 shinyUI(navbarPage(
   "Analyzing Alternative Fuel Types",
-  # page_one,
+  page_one,
   page_two,
   page_three,
   page_four

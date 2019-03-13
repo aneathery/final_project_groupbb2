@@ -1,34 +1,31 @@
-# Project Proposal - Group BB2
+# Project Members - Amber, Karen, Manbir, & Patrick
 
-## Project Description
+&nbsp; Our Informatics project utilizes a dataset containing various information related to Alternative Fueling Stations in the US from the 1970s to 2019. Each entry in the dataset offers valuable insights on the location of the Fueling Station, the contact information, access days, year opened, potential governmental affliation, and more. This dataset was collected and published by the U.S. Department of Energy and can be accessed on their [government website here](https://afdc.energy.gov/data_download). It is frequently updated as more and more Fueling Stations pop up due to the popularity of alternative/hybrid vehicles increasing. The environmental and economic concerns of the future also makes alternative cars a vital innovation to learn more about, but the primary purpose of our project was to see rising trends in alternative fueling stations across the US so that manfucturers, car dealers, or other businesses could gauge whether or not it makes sense to continue investing in alternative fuel based vehicles.
 
-### What is the dataset you'll be working with?  Please include background on who collected the data, where you accessed it, and any additional information we should know about how this data came to be.
+## Analysis
 
-Our dataset is a csv that contains the locations and information about alternative fuel stations throughout the United States. This dataset was accessed from the [U.S. Department of Energy website](https://afdc.energy.gov/data_download), meaning this department collected the data.
+&nbsp; After briefly examining the dataset intially, we found ourselves thinking of the many ways propspective--or current manufacturers--of alternative fuel vehicles could benefit from the insights gained from a dataset analysis. We sought to find whether or not alternative fuel stations are prevelant throughout every state in the US--though our main priority was to see the prevelance of stations around major metropolitian areas. And we did, infact, see that certain alternative fuel stations like the Electric Charging stations were found in every state around a major city. 
 
-### Who is your target audience?  Depending on the domain of your data, there may be a variety of audiences interested in using the dataset.  You should hone in on one of these audiences.
+&nbsp; We also wanted to see how many of a particular fuel station were available in one state compared to another. This led us to find that Electric Charging stations were the most common and states with higher populations tended to have more such stations, as is to be expected. Additionally, we found a general positive trend in the market with more and more fueling stations popping up as the years went on for all types of fueling stations. 
 
-The target audience is prospective or current manufacturers of alternative fuel vehicles. Ideally, they would be looking for positive trends in the market as they would help them identify whether or not to invest more in alternative fuel vehicles. Particularly, they would be interested in seeing whether more and more stations are popping up as Hybrid vehicles gain popularity as well as whether or not stations exist in most parts of the US. Other possible variables of interest include station access times, station cards accepts, and whether or not a station is open for public use.
+&nbsp; Due to the sheer breadth of the dataset and the many variables involved, we invite you to experiment with the visualizations and see the results for yourself! You will find insights on questions such as:
 
-### What does your audience want to learn from your data?  Please list out at least 3 specific questions that your project will answer for your audience.
-Our audience may want to learn many things from our data. For example:
--	Where are different alternative-fueling stations currently located?
-- How many alternative fuel stations are in each state?
+-	Where are different alternative fueling stations currently located?
+-	How many alternative fuel stations are in each state (with a breakdown by *type*)?
+-	How does a given state fare against another when it comes to alternative fuel station availability?
+-	Which types of alternative fuel are the most popular?
 -	How many stations are being opened each year?
-- Which types of alternative fuel are the most popular?
--	Whether they are public or private stations
+- 	And more!
+
+&nbsp; Because this is a topic that is only increasing in popularity you can formulate some of your own questions and find that they, too, can be answered via these visualizations!
 
 
-## Technical Description
+## Visualizations
 
-### How will you be reading in your data (i.e., are you using an API, or is it a static .csv/.json file)?
-We will be reading in a static CSV file.
+In this app, you can find three different interactive visualizations of the dataset:
 
-### What types of data-wrangling (reshaping, reformatting, etc.) will you need to do to your data?
-We may need to format date columns in order to partition by year. We also plan on mapping the fuel type codes of alternative fuel stations to the name of the fuel type. Thankfully, the data includes both an address and lat/long coordinates, so we will not have to convert addresses to lat/long.
+1. A map plotting the location of Alternative Fueling Stations in the US, which gives the user the ability to select which types of Alternative Fueling Stations they would like to see.
+2. A compartive bar chart showing the kinds of Alternative Fuel Stations available, where the user has the ability to select two states to compare.
+3. A line graph showing the number of Alternative Fuel Stations opened, where the user has the ability to select a time period to see.
 
-### What (major/new) libraries will be using in this project (no need to list common libraries that are used in many projects such as dplyr)
-As of right now, we do not plan on using any major or new libraries in this project.
-
-### What major challenges do you anticipate?
-We anticipate that parsing or filtering the data will be one of the most difficult challenges. For example, filtering stations only by year. Furthermore, we don’t fully understand what some of the columns mean. We will need to do some research/googling to determine what some of the data indicates. Additionally, some items are empty. Also, thinking of the most effective data visualizations to communicate our findings may be challenging. 
+These visualizations were done using R and utilized libraries such as plotly, leaflet, ggplot, dplyr, and Shiny.

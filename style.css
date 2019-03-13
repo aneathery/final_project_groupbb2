@@ -1,0 +1,38 @@
+html {
+  background-color: white;
+}
+
+body {
+  margin: 5px;
+  background-color: rgb(240,240,240);
+  font-family: 'Rokkitt';
+  font-size: 14px;
+}
+
+p { 
+  font-size: 15px;
+  color: #333;
+  font-family: 'Muli', sans-serif;
+  margin-bottom: 15px;
+}
+
+h1 { 
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 24px;
+  color: #334;
+}
+
+h2 {
+  -webkit-font-smoothing: antialiased;
+  color: #444;
+  font: bold 40px "proxima-nova";
+  margin: 0;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+li { 
+  font-size: 17px;
+  font-style: oblique;
+}
