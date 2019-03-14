@@ -29,7 +29,28 @@ fuel_types <- list(
   "Electric Charging (ELEC)" = "ELEC",
   "Hydrogen (HY)" = "HY",
   "Liquefied Natural Gas (LNG)" = "LNG",
-  "Propane (LNG)" = "LPG"
+  "Propane (LPG)" = "LPG"
+)
+
+# State names
+state_name_test <- list(
+  "All States",
+  "Alabama" = "AL", "Alaska" = "AK", "Arizona" = "AZ",
+  "Arkansas" = "AR", "California" = "CA", "Colorado" = "CO",
+  "Connecticut" = "CT", "Delaware" = "DE", "Florida" = "FL", "Georgia" = "GA",
+  "Hawaii" = "HI", "Idaho" = "ID", "Illinois" = "IL", "Indiana" = "IN",
+  "Iowa" = "IA", "Kansas" = "KS", "Kentucky" = "KY", "Louisiana" = "LA",
+  "Maine" = "ME", "Maryland" = "MD", "Massachusetts" = "MA", "Michigan" = "MI",
+  "Minnesota" = "MN", "Mississippi" = "MS", "Missouri" = "MO", "Montana" = "MT",
+  "Nebraska" = "NE", "Nevada" = "NV", "New Hampshire" = "NH",
+  "New Jersey" = "NJ", "New Mexico" = "NM",
+  "New York" = "NY", "North Carolina" = "NC", "North Dakota" = "ND",
+  "Ohio" = "OH", "Oklahoma" = "OK", "Oregon" = "OR", "Pennsylvania" = "PA",
+  "Rhode Island" = "RI", "South Carolina" = "SC", "South Dakota" = "SD",
+  "Tennessee" = "TN", "Texas" = "TX", "Utah" = "UT", "Vermont" = "VT",
+  "Virginia" = "VA", "Washington" = "WA", "West Virginia" = "WV",
+  "Wisonson" = "WI", "Wyoming" = "WY", "American Samoa",
+  "District of Columbia" = "DC", "Puerto Rico"
 )
 
 ################################# Widgets ######################################
@@ -72,8 +93,8 @@ slider_year_timeline <- sliderInput(
 dropdown_line_graph <- selectInput(
   "line_dropdown",
   label = "Select State",
-  choices = c("All States", state_names),
-  selected = "WA"
+  choices = state_name_test,
+  selected = "All States"
 )
 
 # Checkbox that lets users select what fuel to see
@@ -103,14 +124,14 @@ page_two <- tabPanel(
     "Alternative Fuel Station Locations"
   ),
   # Description of Analysis Importance
-  p("One way to conceptualize the demand for alternative fuel is by visualizing 
-    the popularity of different fuel types in different regions of the country. 
-    "),
-  h4("Select alternative fuel types of interest to view their locations 
+  p("One way to conceptualize the demand for alternative fuel is by visualizing
+    the popularity of different fuel types in different regions of the country."
+    ),
+  h4("Select alternative fuel types of interest to view their locations
      throughout the United States."),
-  p("Using a map to display the location of alternative stations allows 
+  p("Using a map to display the location of alternative stations allows
     potential buyers to better visualize the locations of fuel stations and thus
-    develop an intuitive understanding of the differing needs 
+    develop an intuitive understanding of the differing needs
     for alternative fuel in different regions of the U.S."),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
@@ -144,21 +165,23 @@ page_three <- tabPanel(
     two states of interest. "),
   p(
     "BD = Biodiesel CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
-    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas, 
+    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas,
     LPG = Propane"
   ),
   p(
     HTML(
-      paste0("If needed as a memory refresher, ", 
-             a(href = 
-                 "https://abbreviations.yourdictionary.com/articles/state-abbrev.html", 
-               "here"
-             ),
-             " are the United States abbreviations with their
+      paste0(
+        "If needed as a memory refresher, ",
+        a(
+          href =
+            "https://abbreviations.yourdictionary.com/articles/state-abbrev.html",
+          "here"
+        ),
+        " are the United States abbreviations with their
              corresponding state."
       )
-      )
-    ),
+    )
+  ),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
   # Start of data
@@ -176,7 +199,7 @@ page_three <- tabPanel(
           plotlyOutput("bar_two")
         )
       )
-    ) 
+    )
   )
 )
 
