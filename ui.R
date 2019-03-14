@@ -154,11 +154,6 @@ page_three <- tabPanel(
     This information allows potential buyers to learn in which states his/her
     fuel type of interest is most accessible in and be able to compare
     two states of interest. "),
-  p(strong(
-    "BD = Biodiesel, CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
-    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas, 
-    LPG = Propane"
-  )),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
   # Start of data
@@ -167,7 +162,14 @@ page_three <- tabPanel(
       width = 3,
       # Widgets
       bar_widget_1,
-      bar_widget_2
+      bar_widget_2,
+      p(strong("BD = Biodiesel")),
+      p(strong("CNG = Compressed Natural Gas")),
+      p(strong("E85 = Ethanol")),
+      p(strong("ELEC = Electric Charging")),
+      p(strong("HY = Hydrogen")),
+      p(strong("LNG = Liquefied Natural Gas")),
+      p(strong("LPG = Propane"))
     ),
     mainPanel(
       fluidRow(
