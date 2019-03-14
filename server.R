@@ -1,7 +1,6 @@
 # server.R
 
 # This is the file that provides instructions to the R server.
-library("shiny")
 
 # Source in files
 source("scripts/map.R")

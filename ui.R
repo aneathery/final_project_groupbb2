@@ -3,14 +3,8 @@
 ############################## Set up ##########################################
 
 # Load Libraries
-library("dplyr")
 library("shiny")
-library("ggplot2")
-library("rsconnect")
 library("plotly")
-library("leaflet")
-library("lubridate")
-library("ggmap")
 
 # Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
@@ -124,8 +118,8 @@ page_two <- tabPanel(
   p("One way to conceptualize the demand for alternative fuel is by visualizing
     the popularity of different fuel types in different regions of the country."
   ),
-  h4("Select alternative fuel types of interest to view their locations
-     throughout the United States."),
+  h4(strong("Select alternative fuel types of interest to view their locations
+     throughout the United States.")),
   p("Using a map to display the location of alternative stations allows
     potential buyers to better visualize the locations of fuel stations and thus
     develop an intuitive understanding of the differing needs
@@ -151,7 +145,7 @@ page_three <- tabPanel(
   p("There are various types of fuel stations throughout the United States
     that consumers can choose from. As the amount of stations within each
     state varies, so does the amount of each fuel type. "),
-  h4("Choose two states to analyze using the dropdown menus."),
+  h4(strong("Choose two states to analyze using the dropdown menus")),
   p("By looking at the two bar charts, one can visually see how the
     availability of different fuel type stations varies between the two
     states. One can quickly learn which fuel type has the most amount of
@@ -160,11 +154,11 @@ page_three <- tabPanel(
     This information allows potential buyers to learn in which states his/her
     fuel type of interest is most accessible in and be able to compare
     two states of interest. "),
-  p(
+  p(strong(
     "BD = Biodiesel, CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
     Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas, 
     LPG = Propane"
-  ),
+  )),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
   # Start of data
@@ -191,15 +185,17 @@ page_three <- tabPanel(
 # Line graph page
 page_four <- tabPanel(
   # Tab name
-  "Trends of Opening Dates",
+  "Growth and Trends",
   titlePanel("Alternate Fuel Growth"),
   # Description of line graph"
   p("Some forms of alternate fuel are more popular than others. This page allows
     people and/or businesses to compare how popular the various forms of
     alternate fuel are by presenting the number of stations opened each year
-    for a specified fuel type."),
-  h4("Choose a fuel type to analyze using the dropdown menu"),
-  p("By looking at the trend of stations opened year by year, people can
+    for a specified fuel type and state."),
+  h4(strong(
+    "Choose a Fuel Type and State to Analyze Using the Dropdown Menus"
+  )),
+  p("By looking at the number of stations opened year by year, people can
     easily visualize the trend that a fuel type is undergoing."),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
