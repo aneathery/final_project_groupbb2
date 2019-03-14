@@ -46,9 +46,9 @@ make_station_map <- function(stations_df, fuel_choice) {
       lat = ~Latitude,
       lng = ~Longitude,
       popup = paste0(
-        "City: ", stations_df$City, "<br/>",
-        "Station Name: ", stations_df$Station.Name, "<br/>",
-        "Fuel Type: ", stations_df$Fuel.Type.Code, "<br/>"
+        "City, State: ", fuel_type$City, ", ", fuel_type$State,  "<br/>",
+        "Station Name: ", fuel_type$Station.Name, "<br/>",
+        "Fuel Type: ", fuel_type$Fuel.Type.Code, "<br/>"
       ),
       color = ~ color_palette(Fuel.Type.Code)
     ) %>%
