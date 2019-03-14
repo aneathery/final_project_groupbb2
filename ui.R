@@ -123,7 +123,7 @@ page_two <- tabPanel(
   # Description of Analysis Importance
   p("One way to conceptualize the demand for alternative fuel is by visualizing
     the popularity of different fuel types in different regions of the country."
-    ),
+  ),
   h4("Select alternative fuel types of interest to view their locations
      throughout the United States."),
   p("Using a map to display the location of alternative stations allows
@@ -141,7 +141,7 @@ page_two <- tabPanel(
       leafletOutput("map")
     )
   )
-)
+  )
 
 # Bar chart page
 page_three <- tabPanel(
@@ -161,8 +161,8 @@ page_three <- tabPanel(
     fuel type of interest is most accessible in and be able to compare
     two states of interest. "),
   p(
-    "BD = Biodiesel CNG = Compressed Natural Gas, E85 = Ethanol,
-    ELEC = Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas,
+    "BD = Biodiesel, CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
+    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas, 
     LPG = Propane"
   ),
   h1(), # Creating space between text and widgets/graphs
@@ -170,6 +170,7 @@ page_three <- tabPanel(
   # Start of data
   sidebarLayout(
     sidebarPanel(
+      width = 3,
       # Widgets
       bar_widget_1,
       bar_widget_2
@@ -178,6 +179,7 @@ page_three <- tabPanel(
       fluidRow(
         splitLayout(
           cellWidths = c("50%", "50%"), # Two charts side-by-side
+          cellArgs = list(style = "padding: 15px"),
           plotlyOutput("bar"),
           plotlyOutput("bar_two")
         )
