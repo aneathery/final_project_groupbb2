@@ -4,9 +4,9 @@
 library("shiny")
 
 # Source in files
-source("bar.R")
-source("line.R")
-source("map.R")
+source("scripts/map.R")
+source("scripts/bar.R")
+source("scripts/line.R")
 
 # Load data
 fuel_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
