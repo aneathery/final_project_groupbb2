@@ -25,13 +25,14 @@ make_bar_chart <- function(data_set, state_var) {
     x = ~Fuel.Type.Code, # variable for the x-axis, specified as a formula
     y = ~n, # variable for the y-axis, specified as a formula
     type = "bar", # create a chart of type "bar" -- a bar chart
-    alpha = .7, # adjust the opacity of the bars
-    hovertext = ~n
+    alpha = .7 # adjust the opacity of the bars
   ) %>%
   layout( # Proper labels for the map
     title = paste0(state_var, " State Breakdown"),
     xaxis = list(title = "Fuel Type"),
-    yaxis = list(title = "Number of Stations")
+    yaxis = list(title = "Number of Stations"),
+    paper_bgcolor = "transparent", # Blends chart with background color
+    plot_bgcolor = "transparent" # Blends chart with background color
   )
 }
 
@@ -48,11 +49,19 @@ make_bar_chart_two <- function(data_set, state_var) {
     y = ~n, # variable for the y-axis, specified as a formula
     type = "bar", # create a chart of type "bar" -- a bar chart
     alpha = .7, # adjust the opacity of the bars
-    hovertext = ~n
+    paper_bgcolor = "transparent",
+    legend = list(
+      x = 0, 
+      y = 1, 
+      bgcolor = 'rgba(255, 255, 255, 0)', 
+      bordercolor = 'rgba(255, 255, 255, 0)'
+    )
   ) %>%
   layout( # Proper labels for the map
     title = paste0(state_var, " State Breakdown"),
     xaxis = list(title = "Fuel Type"),
-    yaxis = list(title = "Number of Stations")
+    yaxis = list(title = "Number of Stations"),
+    paper_bgcolor = "transparent", # Blends chart with background color
+    plot_bgcolor = "transparent" # Blends chart with background color
   )
 }

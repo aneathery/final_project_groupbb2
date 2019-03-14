@@ -29,7 +29,7 @@ fuel_types <- list(
   "Electric Charging (ELEC)" = "ELEC",
   "Hydrogen (HY)" = "HY",
   "Liquefied Natural Gas (LNG)" = "LNG",
-  "Propane (LNG)" = "LPG"
+  "Propane (LPG)" = "LPG"
 )
 
 ################################# Widgets ######################################
@@ -90,7 +90,7 @@ page_one <- tabPanel(
 
 # Map page
 page_two <- tabPanel(
-  "Map",
+  "Locations of Stations",
   titlePanel(
     "Alternative Fuel Station Locations"
   ),
@@ -119,7 +119,7 @@ page_two <- tabPanel(
 
 # Bar chart page
 page_three <- tabPanel(
-  "Bar Chart", # Tab Name
+  "Compare Two States", # Tab Name
   titlePanel("Breakdown of Fuel Types for Two States"),
   # Description of Analysis Importance
   p("There are various types of fuel stations throughout the United States
@@ -134,11 +134,29 @@ page_three <- tabPanel(
     This information allows potential buyers to learn in which states his/her
     fuel type of interest is most accessible in and be able to compare
     two states of interest. "),
+  p(
+    "BD = Biodiesel, CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
+    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas, 
+    LPG = Propane"
+  ),
+  p(
+    HTML(
+      paste0("If needed as a memory refresher, ", 
+             a(href = 
+              "https://abbreviations.yourdictionary.com/articles/state-abbrev.html", 
+              "here"
+               ),
+             " are the United States abbreviations with their
+               corresponding state."
+            )
+         )
+    ),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
   # Start of data
   sidebarLayout(
     sidebarPanel(
+      width = 3,
       # Widgets
       bar_widget_1,
       bar_widget_2
@@ -147,6 +165,7 @@ page_three <- tabPanel(
       fluidRow(
         splitLayout(
           cellWidths = c("50%", "50%"), # Two charts side-by-side
+          cellArgs = list(style = "padding: 15px"),
           plotlyOutput("bar"),
           plotlyOutput("bar_two")
         )
@@ -158,7 +177,7 @@ page_three <- tabPanel(
 # Line graph page
 page_four <- tabPanel(
   # Tab name
-  "Line Graph",
+  "Trends of Opening Dates",
   titlePanel("Alternate Fuel Growth"),
   # Description of line graph"
   p("Some forms of alternate fuel are more popular than others. This page allows
