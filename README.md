@@ -1,4 +1,4 @@
-# Project Members - Amber, Karen, Manbir, & Patrick
+# Project Members - Amber Neathery, Karen Mai, Manbir Parmar, & Patrick Ly
 
 Our Informatics project utilizes a dataset containing various information related to Alternative Fueling Stations in the US from the 1970s to 2019. Each entry in the dataset offers valuable insights on the location of the Fueling Station, the contact information, access days, year opened, potential governmental affiliation, and more. This dataset was collected and published by the U.S. Department of Energy and can be accessed on their [government website here](https://afdc.energy.gov/data_download). It is frequently updated as more and more Fueling Stations pop up due to the popularity of alternative/hybrid vehicles increasing. The environmental and economic concerns of the future also makes alternative cars a vital innovation to learn more about, but the primary purpose of our project was to see rising trends in alternative fueling stations across the US so that manufacturers, car dealers, or other businesses could gauge whether or not it makes sense to continue investing in alternative fuel based vehicles.
 
