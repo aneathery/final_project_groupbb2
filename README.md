@@ -29,3 +29,5 @@ In this app, you can find three different interactive visualizations of the data
 3. A line graph showing the number of Alternative Fuel Stations opened, where the user has the ability to select a time period to see.
 
 These visualizations were done using R and utilized libraries such as plotly, leaflet, ggplot, dplyr, and Shiny.
+
+## [Link to Our Shiny App](https://patrickly5.shinyapps.io/AlternativeFuelReport/)
