@@ -15,12 +15,6 @@ library("ggmap")
 # Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 
-# Getting the state names for the dropdown menu
-state_names <- fuel %>%
-  select(State) %>%
-  arrange(State) %>% # Alphabetizing the states
-  distinct(State) # Getting each individual state
-
 # Fuel Types
 fuel_types <- list(
   "Biodiesel (BD)" = "BD",
@@ -33,24 +27,27 @@ fuel_types <- list(
 )
 
 # State names
-state_name_test <- list(
+state_names <- list(
   "All States",
-  "Alabama" = "AL", "Alaska" = "AK", "Arizona" = "AZ",
-  "Arkansas" = "AR", "California" = "CA", "Colorado" = "CO",
-  "Connecticut" = "CT", "Delaware" = "DE", "Florida" = "FL", "Georgia" = "GA",
-  "Hawaii" = "HI", "Idaho" = "ID", "Illinois" = "IL", "Indiana" = "IN",
-  "Iowa" = "IA", "Kansas" = "KS", "Kentucky" = "KY", "Louisiana" = "LA",
-  "Maine" = "ME", "Maryland" = "MD", "Massachusetts" = "MA", "Michigan" = "MI",
-  "Minnesota" = "MN", "Mississippi" = "MS", "Missouri" = "MO", "Montana" = "MT",
-  "Nebraska" = "NE", "Nevada" = "NV", "New Hampshire" = "NH",
-  "New Jersey" = "NJ", "New Mexico" = "NM",
-  "New York" = "NY", "North Carolina" = "NC", "North Dakota" = "ND",
-  "Ohio" = "OH", "Oklahoma" = "OK", "Oregon" = "OR", "Pennsylvania" = "PA",
-  "Rhode Island" = "RI", "South Carolina" = "SC", "South Dakota" = "SD",
-  "Tennessee" = "TN", "Texas" = "TX", "Utah" = "UT", "Vermont" = "VT",
-  "Virginia" = "VA", "Washington" = "WA", "West Virginia" = "WV",
-  "Wisonson" = "WI", "Wyoming" = "WY", "American Samoa",
-  "District of Columbia" = "DC", "Puerto Rico"
+  "Alabama (AL)" = "AL", "Alaska (AK)" = "AK", "Arizona (AZ)" = "AZ",
+  "Arkansas (AR)" = "AR", "California (CA)" = "CA", "Colorado (CO)" = "CO",
+  "Connecticut (CT)" = "CT", "Delaware (DE)" = "DE", "Florida (FL)" = "FL", 
+  "Georgia (GA)" = "GA", "Hawaii (HI)" = "HI", "Idaho (ID)" = "ID", 
+  "Illinois (IL)" = "IL", "Indiana (IN)" = "IN", "Iowa (IA)" = "IA", 
+  "Kansas (KS)" = "KS", "Kentucky (KY)" = "KY", "Louisiana (LA)" = "LA",
+  "Maine (ME)" = "ME", "Maryland (MD)" = "MD", "Massachusetts (MA)" = "MA", 
+  "Michigan (MI)" = "MI", "Minnesota (MN)" = "MN", "Mississippi (MS)" = "MS", 
+  "Missouri (MO)" = "MO", "Montana (MT)" = "MT", "Nebraska (NE)" = "NE", 
+  "Nevada (NV)" = "NV", "New Hampshire (NH)" = "NH", "New Jersey (NJ)" = "NJ", 
+  "New Mexico (NM)" = "NM", "New York (NY)" = "NY", 
+  "North Carolina (NC)" = "NC", "North Dakota (ND)" = "ND",
+  "Ohio (OH)" = "OH", "Oklahoma (OK)" = "OK", "Oregon (OR)" = "OR", 
+  "Pennsylvania (PA)" = "PA", "Rhode Island (RI)" = "RI", 
+  "South Carolina (SC)" = "SC", "South Dakota (SD)" = "SD",
+  "Tennessee (TN)" = "TN", "Texas (TX)" = "TX", "Utah (UT)" = "UT", 
+  "Vermont (VT)" = "VT", "Virginia (VA)" = "VA", "Washington (WA)" = "WA", 
+  "West Virginia (WV)" = "WV", "Wisonson (WI)" = "WI", "Wyoming (WY)" = "WY", 
+  "American Samoa", "District of Columbia (DC)" = "DC", "Puerto Rico"
 )
 
 ################################# Widgets ######################################
@@ -59,7 +56,7 @@ state_name_test <- list(
 bar_widget_1 <- selectInput(
   "select_state",
   label = "Select First State",
-  choices = state_names,
+  choices = state_names[-1],
   selected = "AR"
 )
 
@@ -67,7 +64,7 @@ bar_widget_1 <- selectInput(
 bar_widget_2 <- selectInput(
   "select_state_two",
   label = "Select Second State",
-  choices = state_names,
+  choices = state_names[-1],
   selected = "MS"
 )
 
@@ -93,7 +90,7 @@ slider_year_timeline <- sliderInput(
 dropdown_line_graph <- selectInput(
   "line_dropdown",
   label = "Select State",
-  choices = state_name_test,
+  choices = state_names,
   selected = "All States"
 )
 
@@ -164,23 +161,9 @@ page_three <- tabPanel(
     fuel type of interest is most accessible in and be able to compare
     two states of interest. "),
   p(
-    "BD = Biodiesel CNG = Compressed Natural Gas, E85 = Ethanol, ELEC =
-    Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas,
+    "BD = Biodiesel CNG = Compressed Natural Gas, E85 = Ethanol,
+    ELEC = Electric Charging, HY = Hydrogen, LNG = Liquefied Natural Gas,
     LPG = Propane"
-  ),
-  p(
-    HTML(
-      paste0(
-        "If needed as a memory refresher, ",
-        a(
-          href =
-            "https://abbreviations.yourdictionary.com/articles/state-abbrev.html",
-          "here"
-        ),
-        " are the United States abbreviations with their
-             corresponding state."
-      )
-    )
   ),
   h1(), # Creating space between text and widgets/graphs
   h1(), # Creating space between text and widgets/graphs
