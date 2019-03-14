@@ -8,8 +8,6 @@
 # Load libraries
 library("dplyr")
 library("plotly")
-library("lintr")
-library("styler")
 
 ############################## Line Graph ######################################
 

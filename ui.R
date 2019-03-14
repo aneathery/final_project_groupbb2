@@ -6,8 +6,6 @@
 library("shiny")
 library("plotly")
 library("leaflet")
-library("lintr")
-library("styler")
 
 # Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)

@@ -8,11 +8,6 @@
 # Load libraries
 library("leaflet")
 library("dplyr")
-library("ggplot2")
-library("lubridate")
-library("lintr")
-library("ggmap")
-library("styler")
 
 # Load raw data
 raw_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
@@ -46,7 +41,7 @@ make_station_map <- function(stations_df, fuel_choice) {
       lat = ~Latitude,
       lng = ~Longitude,
       popup = paste0(
-        "City, State: ", fuel_type$City, ", ", fuel_type$State,  "<br/>",
+        "Location: ", fuel_type$City, ", ", fuel_type$State,  "<br/>",
         "Station Name: ", fuel_type$Station.Name, "<br/>",
         "Fuel Type: ", fuel_type$Fuel.Type.Code, "<br/>"
       ),

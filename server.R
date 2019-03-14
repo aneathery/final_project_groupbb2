@@ -1,9 +1,6 @@
 # server.R
 
 # This is the file that provides instructions to the R server.
-# Libraries
-library("lintr")
-library("styler")
 
 # Source in files
 source("scripts/map.R")
