@@ -15,17 +15,26 @@ library("plotly")
 # This function takes in a data set, a fuel type, and a start and end year and
 # creates a line graph of the number of fueling stations opened for a specified
 # fuel type within a specified ranged
-make_line_graph <- function(data, fuel_type, start_year, end_year) {
+make_line_graph <- function(data, state, fuel_type, start_year, end_year) {
   
-  # Data filtered by year opened
+  # Data with mutated year column and filtered by fuel type
   yearly_data <- data %>%
     mutate(
       year = as.numeric(substr(data$Open.Date, nchar(data$Open.Date) -
-        3, nchar(data$Open.Date)))
+                                 3, nchar(data$Open.Date)))
     ) %>%
     filter(
       Fuel.Type.Code == fuel_type # Select which fuel type to use
-    ) %>%
+    )
+  
+  # filter data by state if selected
+  if (state != "All States") {
+    yearly_data <- yearly_data %>%
+      filter(State == state)
+  }
+  
+  # Group data by year and count the number of stations opened by year
+  yearly_data <- yearly_data %>%
     group_by(year) %>%
     count()
   
@@ -43,8 +52,8 @@ make_line_graph <- function(data, fuel_type, start_year, end_year) {
     x = ~year,
     y = ~n,
     type = "scatter",
-    mode = "line"
-  ) %>%
+    mode = "lines+markers"
+  ) %>% 
     layout(
       title = paste0("Stations Opened By Year"),
       xaxis = list(title = "Year"),

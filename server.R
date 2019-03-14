@@ -14,8 +14,6 @@ fuel_data <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
 # Start shinyServer
 shinyServer <- function(input, output) {
 
-  # Page 1 Overview
-
   # Page 2 Map
   output$map <- renderLeaflet({
     return(make_station_map(fuel_data, input$fuel_type_map))
@@ -32,7 +30,8 @@ shinyServer <- function(input, output) {
   # Page 4 Line Graph
   output$line <- renderPlotly({
     make_line_graph(
-      fuel_data, input$fuel_type_line, input$year_range[1], input$year_range[2]
+      fuel_data, input$line_dropdown, input$fuel_type_line, input$year_range[1], 
+      input$year_range[2]
     )
   })
 }
