@@ -96,7 +96,7 @@ map_widget <- checkboxGroupInput(
   inputId = "fuel_type_map",
   label = "Fuel Type",
   choices = fuel_types,
-  selected = "HY"
+  selected = "LNG"
 )
 
 ################################# UI ###########################################
