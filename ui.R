@@ -84,7 +84,7 @@ slider_year_timeline <- sliderInput(
 # Dropdown for States/locations
 dropdown_line_graph <- selectInput(
   "line_dropdown",
-  label = "Select State",
+  label = "State",
   choices = state_names,
   selected = "All States"
 )
