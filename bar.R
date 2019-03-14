@@ -49,13 +49,7 @@ make_bar_chart_two <- function(data_set, state_var) {
     y = ~n, # variable for the y-axis, specified as a formula
     type = "bar", # create a chart of type "bar" -- a bar chart
     alpha = .7, # adjust the opacity of the bars
-    paper_bgcolor = "transparent",
-    legend = list(
-      x = 0, 
-      y = 1, 
-      bgcolor = 'rgba(255, 255, 255, 0)', 
-      bordercolor = 'rgba(255, 255, 255, 0)'
-    )
+    paper_bgcolor = "transparent"
   ) %>%
   layout( # Proper labels for the map
     title = paste0(state_var, " State Breakdown"),

@@ -34,9 +34,9 @@ make_station_map <- function(stations_df, fuel_choice){
     addCircles(
       lat = ~Latitude,
       lng = ~Longitude,
-      popup = paste0("City: ", stations_df$City,
-                     "; Station Name: ", stations_df$Station.Name,
-                     "; Fuel Type: ", stations_df$Fuel.Type.Code),
+      popup = paste0("City: ", stations_df$City, "<br/>", 
+                     "Station Name: ", stations_df$Station.Name, "<br/>",
+                     "Fuel Type: ", stations_df$Fuel.Type.Code, "<br/>"), 
       color = ~color_palette(Fuel.Type.Code)
     ) %>%
     addLegend(

@@ -1,5 +1,5 @@
 html {
-  background-color: white;
+  background-color: rgb(240,240,240);
 }
 
 body {
@@ -35,4 +35,9 @@ h2 {
 li { 
   font-size: 17px;
   font-style: oblique;
+  font-weight: bold
+}
+
+span {
+  font-weight: bold
 }
