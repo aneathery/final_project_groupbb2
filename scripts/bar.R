@@ -1,7 +1,6 @@
 # bar.R
 
-# This is the file in which Karen will be creating a bar chart about the 
-# breakdown of different fuel types in each state. 
+# Creates a bar chart about the breakdown of different fuel types in each state
 
 ################################### Set up ###################################
 
@@ -27,13 +26,13 @@ make_bar_chart <- function(data_set, state_var) {
     type = "bar", # create a chart of type "bar" -- a bar chart
     alpha = .7 # adjust the opacity of the bars
   ) %>%
-  layout( # Proper labels for the map
-    title = paste0(state_var, " State Breakdown"),
-    xaxis = list(title = "Fuel Type"),
-    yaxis = list(title = "Number of Stations"),
-    paper_bgcolor = "transparent", # Blends chart with background color
-    plot_bgcolor = "transparent" # Blends chart with background color
-  )
+    layout( # Proper labels for the map
+      title = paste0(state_var, " State Breakdown"),
+      xaxis = list(title = "Fuel Type"),
+      yaxis = list(title = "Number of Stations"),
+      paper_bgcolor = "transparent", # Blends chart with background color
+      plot_bgcolor = "transparent" # Blends chart with background color
+    )
 }
 
 make_bar_chart_two <- function(data_set, state_var) {
@@ -51,11 +50,11 @@ make_bar_chart_two <- function(data_set, state_var) {
     alpha = .7, # adjust the opacity of the bars
     paper_bgcolor = "transparent"
   ) %>%
-  layout( # Proper labels for the map
-    title = paste0(state_var, " State Breakdown"),
-    xaxis = list(title = "Fuel Type"),
-    yaxis = list(title = "Number of Stations"),
-    paper_bgcolor = "transparent", # Blends chart with background color
-    plot_bgcolor = "transparent" # Blends chart with background color
-  )
+    layout( # Proper labels for the map
+      title = paste0(state_var, " State Breakdown"),
+      xaxis = list(title = "Fuel Type"),
+      yaxis = list(title = "Number of Stations"),
+      paper_bgcolor = "transparent", # Blends chart with background color
+      plot_bgcolor = "transparent" # Blends chart with background color
+    )
 }

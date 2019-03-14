@@ -1,8 +1,7 @@
 # line.R
 
-# This is the file in which Patrick will be creating a line graph that shows the
-# number of stations opened within a specified timeline, for a specified fuel 
-# type 
+# Creates a line graph that shows the number of stations opened within a 
+# specified timeline, for a specified fuel type 
 
 ################################ Set up ########################################
 

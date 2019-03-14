@@ -1,7 +1,7 @@
 # map.R
 
-# This is the file in which Amber will create a map displaying the
-# location of alternative fuel stations in the United States.
+# Create a map displaying the location of alternative fuel stations in the 
+# United States
 
 ################################### Set up ###################################
 
