@@ -5,6 +5,7 @@
 # Load Libraries
 library("shiny")
 library("plotly")
+library("leaflet")
 
 # Load data
 fuel <- read.csv("alt_fuel_data.csv", stringsAsFactors = FALSE)
@@ -163,6 +164,7 @@ page_three <- tabPanel(
       # Widgets
       bar_widget_1,
       bar_widget_2,
+      # Legend
       p(strong("BD = Biodiesel")),
       p(strong("CNG = Compressed Natural Gas")),
       p(strong("E85 = Ethanol")),
