@@ -1,6 +1,9 @@
 # server.R
 
 # This is the file that provides instructions to the R server.
+# Libraries
+library("lintr")
+library("styler")
 
 # Source in files
 source("scripts/map.R")
@@ -29,7 +32,10 @@ shinyServer <- function(input, output) {
   # Page 4 Line Graph
   output$line <- renderPlotly({
     make_line_graph(
-      fuel_data, input$line_dropdown, input$fuel_type_line, input$year_range[1], 
+      fuel_data,
+      input$line_dropdown,
+      input$fuel_type_line,
+      input$year_range[1],
       input$year_range[2]
     )
   })

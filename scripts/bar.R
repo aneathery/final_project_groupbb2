@@ -7,10 +7,12 @@
 # Load libraries
 library("dplyr")
 library("plotly")
+library("lintr")
+library("styler")
 
 ############################## Bar Chart #####################################
 
-# This bar chart will show how many stations of each fuel type are in a 
+# This bar chart will show how many stations of each fuel type are in a
 # selected state.
 make_bar_chart <- function(data_set, state_var) {
   getting_data <- data_set %>%
